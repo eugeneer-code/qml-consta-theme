@@ -1,6 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QQuickStyle>
+#include "ConstaDesignLibrary.h"
 
 int main(int argc, char *argv[])
 {
@@ -8,6 +10,12 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     const QUrl url("qrc:/qml/main.qml");
+
+    ConstaDesignLibrary::initLibrary(&engine);
+
+    // Configure app style
+    QQuickStyle::setStyle("Consta");
+    QQuickStyle::setFallbackStyle("Material");
 
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {

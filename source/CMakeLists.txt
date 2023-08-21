@@ -2,6 +2,12 @@ set(TARGET_NAME consta-lib)
 
 add_library(${TARGET_NAME} STATIC)
 
+target_sources(${TARGET_NAME} PRIVATE
+    ConstaDesignLibrary.h
+    ConstaDesignLibrary.cpp
+    ConstaDesignRes.qrc
+)
+
 target_link_libraries(${TARGET_NAME} PRIVATE
     Qt6::Core
     Qt6::Quick

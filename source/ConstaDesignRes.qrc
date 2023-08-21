@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Consta/qmldir</file>
+        <file>Consta/Label.qml</file>
+    </qresource>
+</RCC>
