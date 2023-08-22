@@ -1,1 +1,6 @@
 module Consta
+
+singleton ConstaTheme 1.0 ConstaTheme.qml
+
+# Default components
+Label 1.0 Label.qml

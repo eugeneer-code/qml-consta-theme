@@ -1,6 +1,17 @@
 <RCC>
     <qresource prefix="/">
+        <file>Consta/fonts/Inter-Black.ttf</file>
+        <file>Consta/fonts/Inter-Bold.ttf</file>
+        <file>Consta/fonts/Inter-ExtraBold.ttf</file>
+        <file>Consta/fonts/Inter-ExtraLight.ttf</file>
+        <file>Consta/fonts/Inter-Light.ttf</file>
+        <file>Consta/fonts/Inter-Medium.ttf</file>
+        <file>Consta/fonts/Inter-Regular.ttf</file>
+        <file>Consta/fonts/Inter-SemiBold.ttf</file>
+        <file>Consta/fonts/Inter-Thin.ttf</file>
+        <file>Consta/fonts/Inter.ttf</file>
         <file>Consta/qmldir</file>
+        <file>Consta/ConstaTheme.qml</file>
         <file>Consta/Label.qml</file>
     </qresource>
 </RCC>

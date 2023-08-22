@@ -7,4 +7,6 @@ T.Label {
 
     color: "green"
     linkColor: control.palette.link
+
+    font.family: "Inter"
 }
