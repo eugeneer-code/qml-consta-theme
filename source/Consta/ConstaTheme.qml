@@ -2,6 +2,10 @@ pragma Singleton
 import QtQuick
 
 QtObject {
+    property int currentTheme: Consta.Theme.Light
+
+    property color backgroundColor: ConstaPalette.essential[currentTheme]
+    property color textColor: ConstaPalette.base[currentTheme]
 
     // Load fonts
     property FontLoader fontBlack: FontLoader{source: Qt.resolvedUrl("fonts/Inter-Black.ttf")}

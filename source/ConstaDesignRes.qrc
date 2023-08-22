@@ -11,7 +11,9 @@
         <file>Consta/fonts/Inter-Thin.ttf</file>
         <file>Consta/fonts/Inter.ttf</file>
         <file>Consta/qmldir</file>
+        <file>Consta/Consta.qml</file>
         <file>Consta/ConstaTheme.qml</file>
+        <file>Consta/ConstaPalette.qml</file>
         <file>Consta/Label.qml</file>
     </qresource>
 </RCC>

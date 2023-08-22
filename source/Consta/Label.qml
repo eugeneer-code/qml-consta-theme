@@ -5,7 +5,7 @@ import QtQuick.Templates as T
 T.Label {
     id: control
 
-    color: "green"
+    color: ConstaTheme.textColor
     linkColor: control.palette.link
 
     font.family: "Inter"
