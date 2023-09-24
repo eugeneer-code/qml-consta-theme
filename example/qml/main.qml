@@ -11,10 +11,18 @@ Window {
 
     Rectangle {
         anchors.fill: parent
-        color: ConstaTheme.backgroundColor
+        color: "white"
     }
 
     Label {
         text: "Consta example"
     }
+
+    Rectangle {
+        width: 100
+        height: 100
+        color: ConstaTheme.bg.secondary
+    }
+
+
 }

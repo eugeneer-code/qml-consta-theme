@@ -6,6 +6,8 @@ target_sources(${TARGET_NAME} PRIVATE
     ConstaDesignLibrary.h
     ConstaDesignLibrary.cpp
     ConstaDesignRes.qrc
+    Utils.h
+    Utils.cpp
 )
 
 target_link_libraries(${TARGET_NAME} PRIVATE
