@@ -12,17 +12,16 @@ public:
 	 * @param color Can be retrieve from QML as string
 	 * @param alpha alpha channel value in range [0; 1]
 	 */
-    Q_INVOKABLE static QColor getAlphaColor(QColor color, double alpha);
+    Q_INVOKABLE static QColor alpha(QColor color, double alpha);
 
     /**
-     * @brief Change HSVA values of given color
+     * @brief Change HSLA values of given color
      * @param color Original QColor
-     * @param h Hue, integer diff
-     * @param s Saturation, integer diff
-     * @param l Lightness, integer diff
-     * @param a New alpha channel value in range [0; 1]
+     * @param h, s, l, a  can be absolute ("23", "230"), diff ("-5", "+40"), percentage diff ("-10%", "+5%")
+     * h is in range [0;360]
+     * s, l, a in range [0;100]
      */
-    Q_INVOKABLE static QColor hsla(QColor color, int h, int s, int v, double a = 1.0);
+    Q_INVOKABLE static QColor hsla(QColor color, QString h, QString s, QString v, QString a);
 
 };
 

@@ -13,10 +13,9 @@
         <file>Consta/qmldir</file>
         <file>Consta/Consta.qml</file>
         <file>Consta/ConstaTheme.qml</file>
-        <file>Consta/ConstaPalette.qml</file>
-        <file>Consta/ConstaPaletteBackground.qml</file>
-        <file>Consta/ConstaPaletteTypography.qml</file>
-        <file>Consta/ConstaPaletteControls.qml</file>
+        <file>Consta/ConstaPaletteDefault.qml</file>
+        <file>Consta/ConstaPaletteDark.qml</file>
+        <file>Consta/ConstaPaletteDisplay.qml</file>
         <file>Consta/Label.qml</file>
     </qresource>
 </RCC>

@@ -6,7 +6,7 @@ import QtQuick
  */
 Item {
     enum Theme {
-        Light = 0,
+        Default = 0,
         Dark,
         Display
     }

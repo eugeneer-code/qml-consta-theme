@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/main.qml</file>
+        <file>qml/Pages/Colors.qml</file>
+        <file>icons/rect_pattern.png</file>
     </qresource>
 </RCC>

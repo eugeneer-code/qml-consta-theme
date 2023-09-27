@@ -3,27 +3,27 @@ import QtQuick
 
 QtObject {
     id: theme
-    property int currentTheme: Consta.Theme.Light
+    property int currentTheme: Consta.Theme.Default
 
-    property color pathColor: "#0078D2"
     property color projectColor: "#0071B2"
 
-    property var bg: ConstaPaletteBackground{
-        currentTheme: theme.currentTheme
-        path: theme.pathColor
-        project: theme.projectColor
+    property var defaultPalette: ConstaPaletteDefault {
+        project: projectColor
+    }
+    property var darkPalette: ConstaPaletteDark {
+        project: projectColor
+    }
+    property var displayPalette: ConstaPaletteDisplay {
+        project: projectColor
     }
 
-    property var typo: ConstaPaletteTypography {
-        currentTheme: theme.currentTheme
-        path: theme.pathColor
-        project: theme.projectColor
-    }
-
-    property var control: ConstaPaletteControls {
-        currentTheme: theme.currentTheme
-        path: theme.pathColor
-        project: theme.projectColor
+    property var palette: {
+        switch(currentTheme){
+            case Consta.Theme.Default: return defaultPalette
+            case Consta.Theme.Dark: return darkPalette
+            case Consta.Theme.Display: return displayPalette
+            default: return undefined
+        }
     }
 
     // Load fonts
