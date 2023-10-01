@@ -8,9 +8,11 @@ namespace consta {
 class ConstaStyle : public QObject {
     Q_OBJECT
     Q_PROPERTY(int textStyle READ textStyle WRITE setTextStyle NOTIFY tsChanged)
+    Q_PROPERTY(bool boldText READ boldText WRITE setBoldText NOTIFY btChanged)
 
 signals:
     void tsChanged();
+    void btChanged();
 
 public:
     ConstaStyle(QObject* parent = nullptr);
@@ -20,8 +22,12 @@ public:
     int textStyle() const;
     void setTextStyle(int style);
 
+    bool boldText() const;
+    void setBoldText(bool bold);
+
 private:
     int _textStyle;
+    bool _boldText;
 };
 
 }

@@ -21,20 +21,28 @@ Item {
 
     Flickable {
         anchors.fill: parent
-        contentHeight: column.height
+        contentHeight: column.height + column.y + 12
         clip: true
         boundsBehavior: Flickable.StopAtBounds
         ScrollBar.vertical: ScrollBar{}
+        CheckBox{
+            id: checkBox
+            x: 12
+            y: 12
+            text: "Bold text"
+        }
         Column {
             id: column
             x: 12
-            y: 12
+            y: 60
             spacing: 12
             Repeater {
                 model: textModel
                 Label {
+                    id: label
                     text: modelData.name
                     ConstaStyle.textStyle: modelData.value
+                    ConstaStyle.boldText: checkBox.checked
                 }
             }
         }
