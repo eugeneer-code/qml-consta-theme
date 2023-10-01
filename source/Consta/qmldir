@@ -10,3 +10,4 @@ ConstaPaletteDisplay 1.0 ConstaPaletteDisplay.qml
 
 # Default components
 Label 1.0 Label.qml
+CheckBox 1.0 CheckBox.qml

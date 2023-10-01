@@ -17,5 +17,6 @@
         <file>Consta/ConstaPaletteDark.qml</file>
         <file>Consta/ConstaPaletteDisplay.qml</file>
         <file>Consta/Label.qml</file>
+        <file>Consta/CheckBox.qml</file>
     </qresource>
 </RCC>
