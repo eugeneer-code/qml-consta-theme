@@ -12,34 +12,59 @@ Window {
     title: "Consta Example"
     color: ConstaTheme.palette.bg_default
 
-    Rectangle {
-        width: parent.width
-        color: ConstaTheme.palette.bg_default
-        height: 40
+    // Sidebar model
+    property var pages: [
+        {name: "Colors"},
+        {name: "Typography"}
+    ]
+
+    Item {
+        id: sideBar
+        height: parent.height
+        width: 200
+        ListView {
+            id: listView
+            anchors.fill: parent
+            model: pages
+            delegate: ItemDelegate {
+                highlighted: index == listView.currentIndex
+                text: modelData.name
+                width: parent.width
+                onClicked: {
+                    listView.currentIndex = index
+                    stack.currentIndex = index
+                }
+            }
+        }
 
         ComboBox {
             anchors {
-                verticalCenter: parent.verticalCenter
+                bottom: parent.bottom
+                margins: 12
+                left: parent.left
                 right: parent.right
-                rightMargin: 12
             }
             height: 40
             model: ["Default", "Dark", "Display"]
-            onActivated: ConstaTheme.currentTheme = index
+            onActivated: (index) => { ConstaTheme.currentTheme = index }
         }
     }
     Rectangle {
-        width: parent.width
-        y: 41
-        height: 1
+        width: 1
+        height: parent.height
         color: ConstaTheme.palette.typo_primary
+        x: sideBar.width+1
     }
 
     StackLayout {
+        id: stack
+        anchors {
+            fill: parent
+            leftMargin: sideBar.width + 1
+        }
         currentIndex: 0
-        anchors.fill: parent
-        anchors.topMargin: 42
 
         Colors{}
+        Typography{}
     }
 }

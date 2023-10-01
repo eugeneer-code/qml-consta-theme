@@ -3,7 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Effects
 import Qt5Compat.GraphicalEffects
-import Consta 1.0
+import Consta
 
 Item {
 
@@ -151,6 +151,8 @@ Item {
         anchors.fill: parent
         contentHeight: column.height
         clip: true
+        boundsBehavior: Flickable.StopAtBounds
+        ScrollBar.vertical: ScrollBar{}
         Column {
             id: column
             x: 12

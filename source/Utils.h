@@ -3,6 +3,8 @@
 #include <QObject>
 #include <QColor>
 
+namespace consta {
+
 class Utils : public QObject {
     Q_OBJECT
 public:
@@ -25,5 +27,6 @@ public:
 
 };
 
+}
 
 #endif //QML_CONSTA_THEME_UTILS_H

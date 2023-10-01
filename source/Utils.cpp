@@ -1,5 +1,7 @@
 #include "Utils.h"
 
+using namespace consta;
+
 Utils::Utils(QObject* parent)
     : QObject(parent)
 {
