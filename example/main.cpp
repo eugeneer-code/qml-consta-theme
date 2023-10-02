@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     const QUrl url("qrc:/qml/main.qml");
 
-    consta::ConstaDesignLibrary::initLibrary(&engine);
+    ConstaDesignLibrary::initLibrary(&engine);
 
     // Configure app style
     QQuickStyle::setStyle("Consta");

@@ -4,8 +4,6 @@
 #include "Utils.h"
 #include "ConstaStyle.h"
 
-using namespace consta;
-
 void ConstaDesignLibrary::initLibrary(QQmlEngine *engine)
 {
     // Register C++ classes
@@ -17,7 +15,7 @@ void ConstaDesignLibrary::initLibrary(QQmlEngine *engine)
     // Define module search path
     engine->addImportPath(":/");
 
-    static Utils utils;
+    static consta::Utils utils;
     engine->rootContext()->setContextProperty("_ConstaUtils", &utils);
 
     qDebug() << "Consta library init done";
