@@ -26,18 +26,18 @@ Item {
     }
 
     enum Spacing {
-        Sp_3XS = 2,
-        Sp_2XS = 4,
-        Sp_XS = 8,
-        Sp_S = 12,
-        Sp_M = 16,
-        Sp_L = 20,
-        Sp_XL = 24,
-        Sp_2L = 32,
-        Sp_3XL = 40,
-        Sp_4XL = 48,
-        Sp_5XL = 72,
-        Sp_6XL = 96
+        XS_3 = 2,
+        XS_2 = 4,
+        XS = 8,
+        S = 12,
+        M = 16,
+        L = 20,
+        XL = 24,
+        XL_2 = 32,
+        XL_3 = 40,
+        XL_4 = 48,
+        XL_5 = 72,
+        XL_6 = 96
     }
 
     enum ControlSize {

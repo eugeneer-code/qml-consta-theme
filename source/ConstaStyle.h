@@ -9,10 +9,14 @@ class ConstaStyle : public QObject {
     Q_OBJECT
     Q_PROPERTY(int textStyle READ textStyle WRITE setTextStyle NOTIFY tsChanged)
     Q_PROPERTY(bool boldText READ boldText WRITE setBoldText NOTIFY btChanged)
+    Q_PROPERTY(int controlType READ controlType WRITE setControlType NOTIFY ctChanged)
+    Q_PROPERTY(int controlSize READ controlSize WRITE setControlSize NOTIFY csChanged)
 
 signals:
     void tsChanged();
     void btChanged();
+    void ctChanged();
+    void csChanged();
 
 public:
     ConstaStyle(QObject* parent = nullptr);
@@ -25,9 +29,17 @@ public:
     bool boldText() const;
     void setBoldText(bool bold);
 
+    int controlType() const;
+    void setControlType(int type);
+
+    int controlSize() const;
+    void setControlSize(int size);
+
 private:
     int _textStyle;
     bool _boldText;
+    int _controlType;
+    int _controlSize;
 };
 
 }

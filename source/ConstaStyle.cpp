@@ -5,7 +5,9 @@ using namespace consta;
 ConstaStyle::ConstaStyle(QObject* parent)
     : QObject(parent),
     _textStyle(3),
-    _boldText(false)
+    _boldText(false),
+    _controlType(0),
+    _controlSize(1)
 {
 }
 
@@ -34,4 +36,26 @@ void ConstaStyle::setBoldText(bool bold)
 {
     _boldText = bold;
     emit btChanged();
+}
+
+int ConstaStyle::controlType() const
+{
+    return _controlType;
+}
+
+void ConstaStyle::setControlType(int type)
+{
+    _controlType = type;
+    emit ctChanged();
+}
+
+int ConstaStyle::controlSize() const
+{
+    return _controlSize;
+}
+
+void ConstaStyle::setControlSize(int size)
+{
+    _controlSize = size;
+    emit csChanged();
 }

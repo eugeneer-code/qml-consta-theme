@@ -3,6 +3,7 @@
         <file>qml/main.qml</file>
         <file>qml/Pages/Colors.qml</file>
         <file>qml/Pages/Typography.qml</file>
+        <file>qml/Pages/CheckBoxes.qml</file>
         <file>icons/rect_pattern.png</file>
     </qresource>
 </RCC>

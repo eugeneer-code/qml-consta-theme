@@ -15,7 +15,8 @@ Window {
     // Sidebar model
     property var pages: [
         {name: "Colors"},
-        {name: "Typography"}
+        {name: "Typography"},
+        {name: "CheckBoxes"}
     ]
 
     Item {
@@ -62,9 +63,10 @@ Window {
             fill: parent
             leftMargin: sideBar.width + 1
         }
-        currentIndex: 0
+        currentIndex: 2
 
         Colors{}
         Typography{}
+        CheckBoxes{}
     }
 }

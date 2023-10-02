@@ -15,25 +15,43 @@ T.CheckBox {
     padding: 6
     spacing: 6
 
+    QtObject {
+        id: internal
+        property bool ghost: control.ConstaStyle.controlType == Consta.ControlType.Ghost
+        property color normalColor: ghost ? ConstaTheme.palette.control_bg_ghost : ConstaTheme.palette.control_bg_primary
+        property color hoverColor: ghost ? ConstaTheme.palette.control_bg_ghost_hover : ConstaTheme.palette.control_bg_primary_hover
+        property int controlSize: switch(control.ConstaStyle.controlSize){
+            case Consta.ControlSize.XS: return 12;
+            case Consta.ControlSize.S: return 14;
+            case Consta.ControlSize.M: return 16;
+            case Consta.ControlSize.L: return 20;
+            default: return 14;
+        }
+    }
+
     indicator: Rectangle {
-        implicitWidth: 16
-        implicitHeight: 16
+        implicitWidth: internal.controlSize
+        implicitHeight: internal.controlSize
 
         x: control.text ? (control.mirrored ? control.width - width - control.rightPadding : control.leftPadding) : control.leftPadding + (control.availableWidth - width) / 2
         y: control.topPadding + (control.availableHeight - height) / 2
 
-        color: control.down ? ConstaTheme.palette.control_bg_primary : "transparent"
-        border.width: 1
-        border.color: control.down ? "transparent" : ConstaTheme.palette.control_bg_border_default
-
-        Rectangle {
-            x: (parent.width - width) / 2
-            y: (parent.height - height) / 2
-            width: 16
-            height: 3
-            color: control.palette.text
-            visible: control.checkState === Qt.PartiallyChecked
+        color: {
+            if(!control.enabled) return ConstaTheme.palette.control_bg_disable
+            if(!control.checked) return "transparent"
+            if(control.hovered || control.down) return internal.hoverColor
+            return internal.normalColor
         }
+
+        border.width: 1
+        border.color: {
+            if(!control.enabled) return "transparent"
+            if(internal.ghost) return ConstaTheme.palette.control_bg_border_default
+            if(!control.checked) return ConstaTheme.palette.control_bg_border_default
+            return "transparent"
+        }
+        radius: 4
+
     }
 
     contentItem: CheckLabel {
