@@ -52,6 +52,10 @@ T.CheckBox {
         }
         radius: 4
 
+        Image {
+            anchors.fill: parent
+            source: "qrc:/Consta/icons/controls/checkbox_check.svg"
+        }
     }
 
     contentItem: CheckLabel {
