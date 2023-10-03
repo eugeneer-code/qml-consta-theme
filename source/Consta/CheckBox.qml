@@ -14,6 +14,8 @@ T.CheckBox {
 
     padding: 0
     spacing: control.ConstaStyle.controlSize == Consta.ControlSize.L ? 12 : 8
+    activeFocusOnTab: true
+    onPressed: forceActiveFocus(control)
 
     QtObject {
         id: internal
@@ -73,6 +75,15 @@ T.CheckBox {
                 if(internal.ghost) return ConstaTheme.palette.control_typo_ghost
                 else return ConstaTheme.palette.control_typo_primary
             }
+        }
+
+        FocusRectangle {
+            anchors.centerIn: parent
+            width: parent.width + 8
+            height: parent.height + 8
+            radius: 4
+            visible: control.activeFocus
+            antialiasing: true
         }
     }
 

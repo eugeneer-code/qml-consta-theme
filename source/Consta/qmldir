@@ -14,3 +14,4 @@ CheckBox 1.0 CheckBox.qml
 
 # Custom components
 ConstaIcon 1.0 custom/ConstaIcon.qml
+FocusRectangle 1.0 custom/FocusRectangle.qml
