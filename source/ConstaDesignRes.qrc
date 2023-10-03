@@ -18,6 +18,7 @@
         <file>Consta/ConstaPaletteDisplay.qml</file>
         <file>Consta/Label.qml</file>
         <file>Consta/CheckBox.qml</file>
+        <file>Consta/custom/ConstaIcon.qml</file>
 
         <file>Consta/icons/controls/checkbox_check.svg</file>
         <file>Consta/icons/controls/checkbox_intermediate.svg</file>

@@ -30,8 +30,8 @@ QtObject {
     property color bg_border: _ConstaUtils.alpha(phantom, 0.28)
     property color bg_stripe: _ConstaUtils.alpha(phantom, 0.05)
     property color bg_ghost: _ConstaUtils.alpha(phantom, 0.08)
-    property color bg_tone: _ConstaUtils.hsla(phantom, "+0", "+100%", "-92%", "85%")
-    property color bg_soft: _ConstaUtils.hsla(essential, "+0", "+0", "+100%", "90%")
+    property color bg_tone: _ConstaUtils.hsla(phantom, "+0", "+100%", "-92", "85%")
+    property color bg_soft: _ConstaUtils.hsla(essential, "+0", "+0", "+100", "90%")
     property color bg_system: _ConstaUtils.hsla(system, "213", "45", "35", "100%")
     property color bg_normal: normal
     property color bg_success: success
@@ -70,8 +70,8 @@ QtObject {
     property color control_bg_active: _ConstaUtils.alpha(path, 0.8)
     property color control_bg_primary: path
     property color control_bg_primary_hover: _ConstaUtils.hsla(path, "+0", "+0", "+9%", "100%")
-    property color control_typo_primary: _ConstaUtils.hsla(base, "+0", "+0", "+100%", "100%")
-    property color control_typo_primary_hover: _ConstaUtils.hsla(base, "+0", "+0", "+100%", "100%")
+    property color control_typo_primary: _ConstaUtils.hsla(base, "+0", "+0", "+100", "100%")
+    property color control_typo_primary_hover: _ConstaUtils.hsla(base, "+0", "+0", "+100", "100%")
     property color control_bg_secondary: _ConstaUtils.alpha(essential, 0)
     property color control_bg_border_secondary: path
     property color control_bg_border_secondary_hover: _ConstaUtils.hsla(path, "+0", "+0", "+9%", "100%")

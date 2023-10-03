@@ -12,8 +12,8 @@ T.CheckBox {
                              implicitContentHeight + topPadding + bottomPadding,
                              implicitIndicatorHeight + topPadding + bottomPadding)
 
-    padding: 6
-    spacing: 6
+    padding: 0
+    spacing: control.ConstaStyle.controlSize == Consta.ControlSize.L ? 12 : 8
 
     QtObject {
         id: internal
@@ -27,6 +27,13 @@ T.CheckBox {
             case Consta.ControlSize.L: return 20;
             default: return 14;
         }
+        property int iconSize: switch(control.ConstaStyle.controlSize){
+           case Consta.ControlSize.XS: return 10;
+           case Consta.ControlSize.S: return 12;
+           case Consta.ControlSize.M: return 14;
+           case Consta.ControlSize.L: return 16;
+           default: return 12;
+       }
     }
 
     indicator: Rectangle {
@@ -38,7 +45,7 @@ T.CheckBox {
 
         color: {
             if(!control.enabled) return ConstaTheme.palette.control_bg_disable
-            if(!control.checked) return "transparent"
+            if(control.checkState == Qt.Unchecked) return "transparent"
             if(control.hovered || control.down) return internal.hoverColor
             return internal.normalColor
         }
@@ -46,24 +53,42 @@ T.CheckBox {
         border.width: 1
         border.color: {
             if(!control.enabled) return "transparent"
+            if(control.hovered && (internal.ghost || control.checkState == Qt.Unchecked))
+                return ConstaTheme.palette.control_bg_border_default_hover
             if(internal.ghost) return ConstaTheme.palette.control_bg_border_default
-            if(!control.checked) return ConstaTheme.palette.control_bg_border_default
+            if(control.checkState == Qt.Unchecked) return ConstaTheme.palette.control_bg_border_default
             return "transparent"
         }
         radius: 4
 
-        Image {
-            anchors.fill: parent
-            source: "qrc:/Consta/icons/controls/checkbox_check.svg"
+        ConstaIcon {
+            anchors.centerIn: parent
+            visible: control.checkState != Qt.Unchecked
+            size: internal.iconSize
+            source: control.checkState == Qt.PartiallyChecked ?
+                        "qrc:/Consta/icons/controls/checkbox_intermediate.svg" :
+                        "qrc:/Consta/icons/controls/checkbox_check.svg"
+            color: {
+                if(!control.enabled) return ConstaTheme.palette.control_typo_disable
+                if(internal.ghost) return ConstaTheme.palette.control_typo_ghost
+                else return ConstaTheme.palette.control_typo_primary
+            }
         }
     }
 
-    contentItem: CheckLabel {
+    contentItem: Label {
         leftPadding: control.indicator && !control.mirrored ? control.indicator.width + control.spacing : 0
         rightPadding: control.indicator && control.mirrored ? control.indicator.width + control.spacing : 0
-
+        horizontalAlignment: Text.AlignLeft
+        verticalAlignment: Text.AlignVCenter
+        elide: Text.ElideRight
         text: control.text
-        font: control.font
-        color: control.palette.windowText
+        font.pixelSize: switch(control.ConstaStyle.controlSize){
+            case Consta.ControlSize.XS: return 12;
+            case Consta.ControlSize.S: return 14;
+            case Consta.ControlSize.M: return 16;
+            case Consta.ControlSize.L: return 18;
+            default: return 14;
+        }
     }
 }

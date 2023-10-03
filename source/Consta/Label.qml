@@ -6,7 +6,7 @@ import Consta
 T.Label {
     id: control
 
-    color: ConstaTheme.palette.typo_primary
+    color: enabled ? ConstaTheme.palette.typo_primary : ConstaTheme.palette.control_typo_disable
 
     QtObject{
         id: internal

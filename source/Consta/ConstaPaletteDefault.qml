@@ -70,8 +70,8 @@ QtObject {
     property color control_bg_active: _ConstaUtils.alpha(path, 0.5)
     property color control_bg_primary: path
     property color control_bg_primary_hover: _ConstaUtils.hsla(path, "+0", "+0", "+9", "100%")
-    property color control_typo_primary: _ConstaUtils.hsla(base, "+0", "+0", "+100%", "100%")
-    property color control_typo_primary_hover: _ConstaUtils.hsla(base, "+0", "+0", "+100%", "100%")
+    property color control_typo_primary: _ConstaUtils.hsla(base, "+0", "+0", "+100", "100%")
+    property color control_typo_primary_hover: _ConstaUtils.hsla(base, "+0", "+0", "+100", "100%")
     property color control_bg_secondary: _ConstaUtils.alpha(essential, 0)
     property color control_bg_border_secondary: path
     property color control_bg_border_secondary_hover: _ConstaUtils.hsla(path, "+0", "+0", "+9%", "100%")
