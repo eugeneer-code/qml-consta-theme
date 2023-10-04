@@ -78,9 +78,7 @@ T.CheckBox {
         }
 
         FocusRectangle {
-            anchors.centerIn: parent
-            width: parent.width + 8
-            height: parent.height + 8
+            anchors.fill: parent
             radius: 4
             visible: control.activeFocus
             antialiasing: true
