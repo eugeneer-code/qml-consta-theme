@@ -10,8 +10,8 @@ Item {
     onVisibleChanged: {
         if(visible){
             borderOpacity = 1.0
-            borderOpacity2 = 0.6
-            borderOpacity3 = 0.6
+            borderOpacity2 = 0.0
+            borderOpacity3 = 1.0
         }
     }
 
@@ -77,7 +77,7 @@ Item {
 
             RoundedRectangle {
                 anchors.fill: parent
-                radius: root.radius
+                radius: root.radius * 1.5
                 color: ConstaTheme.palette.control_bg_focus
             }
 

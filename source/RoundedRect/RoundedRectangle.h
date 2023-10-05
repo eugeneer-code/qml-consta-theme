@@ -7,20 +7,14 @@ class RoundedRectangle : public QQuickPaintedItem {
   Q_OBJECT
   QML_ELEMENT
 
-  Q_PROPERTY(QColor color MEMBER m_Color WRITE setColor NOTIFY colorChanged)
-  Q_PROPERTY(QColor borderColor MEMBER m_BorderColor WRITE setBorderColor NOTIFY
-                 borderColorChanged)
-  Q_PROPERTY(qreal borderWidth MEMBER m_BorderWidth WRITE setBorderWidth NOTIFY
-                 borderWidthChanged)
-  Q_PROPERTY(qreal radius MEMBER m_Radius WRITE setRadius NOTIFY radiusChanged)
-  Q_PROPERTY(
-      qreal radiusTL MEMBER m_RadiusTL WRITE setRadiusTL NOTIFY radiusTLChanged)
-  Q_PROPERTY(
-      qreal radiusTR MEMBER m_RadiusTR WRITE setRadiusTR NOTIFY radiusTRChanged)
-  Q_PROPERTY(
-      qreal radiusBL MEMBER m_RadiusBL WRITE setRadiusBL NOTIFY radiusBLChanged)
-  Q_PROPERTY(
-      qreal radiusBR MEMBER m_RadiusBR WRITE setRadiusBR NOTIFY radiusBRChanged)
+  Q_PROPERTY(QColor color MEMBER _color WRITE setColor NOTIFY colorChanged)
+  Q_PROPERTY(QColor borderColor MEMBER _borderColor WRITE setBorderColor NOTIFY borderColorChanged)
+  Q_PROPERTY(qreal borderWidth MEMBER _borderWidth WRITE setBorderWidth NOTIFY borderWidthChanged)
+  Q_PROPERTY(qreal radius MEMBER _radius WRITE setRadius NOTIFY radiusChanged)
+  Q_PROPERTY(qreal radiusTL MEMBER _radiusTL WRITE setRadiusTL NOTIFY radiusTLChanged)
+  Q_PROPERTY(qreal radiusTR MEMBER _radiusTR WRITE setRadiusTR NOTIFY radiusTRChanged)
+  Q_PROPERTY(qreal radiusBL MEMBER _radiusBL WRITE setRadiusBL NOTIFY radiusBLChanged)
+  Q_PROPERTY(qreal radiusBR MEMBER _radiusBR WRITE setRadiusBR NOTIFY radiusBRChanged)
 
 public:
     explicit RoundedRectangle(QQuickItem *parent = nullptr);
@@ -48,14 +42,17 @@ protected:
     void paint(QPainter *painter) override;
 
 private:
-  QColor m_Color;
-  QColor m_BorderColor;
-  qreal m_BorderWidth{0.0};
-  qreal m_Radius{0.0};
-  qreal m_RadiusTL{-1.0};
-  qreal m_RadiusTR{-1.0};
-  qreal m_RadiusBR{-1.0};
-  qreal m_RadiusBL{-1.0};
+    QPainterPath rectPath(bool border);
+
+private:
+  QColor _color;
+  QColor _borderColor;
+  qreal _borderWidth{0.0};
+  qreal _radius{0.0};
+  qreal _radiusTL{-1.0};
+  qreal _radiusTR{-1.0};
+  qreal _radiusBR{-1.0};
+  qreal _radiusBL{-1.0};
 };
 
 #endif // CONSTA_ROUNDEDRECTANGLE_H

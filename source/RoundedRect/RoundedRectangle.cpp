@@ -4,96 +4,119 @@
 #include <QPainterPath>
 
 RoundedRectangle::RoundedRectangle(QQuickItem *parent)
-    : QQuickPaintedItem{parent}, m_Color{QColor{"red"}}, m_BorderColor{
-                                                      QColor{"transparent"}} {
+    : QQuickPaintedItem{parent},
+    _color{QColor{"red"}},
+    _borderColor{QColor{"transparent"}}
+{
 }
 
 void RoundedRectangle::paint(QPainter *painter)
 {
-    painter->setBrush(m_Color);
+    painter->setBrush(_color);
     painter->setPen(Qt::NoPen);
-    painter->setRenderHint(QPainter::Antialiasing);
+    painter->setRenderHint(QPainter::Antialiasing, true);
+    painter->setRenderHint(QPainter::SmoothPixmapTransform, true);
+
+    QPainterPath borderPath = rectPath(false);
+    QPainterPath centralPath = rectPath(true);
+    if(_borderWidth != 0 && _borderColor != QColor("transparent")) {
+        QPainterPath clipPath = centralPath;
+        clipPath.addRect(boundingRect());
+        painter->setClipPath(clipPath);
+        painter->strokePath(borderPath, QPen(_borderColor, _borderWidth));
+        //painter->fillPath(borderPath, _borderColor);
+        painter->setClipPath(clipPath, Qt::NoClip);
+    }
+    if(_color != QColor("transparent")) {
+        painter->fillPath(centralPath, _color);
+    }
+}
+
+QPainterPath RoundedRectangle::rectPath(bool border)
+{
     qreal W = size().width();
     qreal H = size().height();
-    qreal tl = m_Radius, tr = m_Radius, bl = m_Radius, br = m_Radius;
-    if(m_RadiusTL != -1) tl = m_RadiusTL;
-    if(m_RadiusBL != -1) bl = m_RadiusBL;
-    if(m_RadiusBR != -1) br = m_RadiusBR;
-    if(m_RadiusTR != -1) tr = m_RadiusTR;
+    qreal tl = _radius, tr = _radius, bl = _radius, br = _radius;
+    if(_radiusTL != -1) tl = _radiusTL;
+    if(_radiusBL != -1) bl = _radiusBL;
+    if(_radiusBR != -1) br = _radiusBR;
+    if(_radiusTR != -1) tr = _radiusTR;
+    qreal B = border ? _borderWidth : 0;
+
     QPainterPath path;
-    path.moveTo(tl, 0);
-    path.lineTo(W - tr, 0);
-    path.arcTo(W - tr*2, 0, tr*2, tr*2, 90, -90);
-    path.lineTo(W, H - br);
-    path.arcTo(W - br*2, H - br*2, br*2, br*2, 0, -90);
-    path.lineTo(bl, H);
-    path.arcTo(0, H - bl*2, bl*2, bl*2, 270, -90);
-    path.lineTo(0, tl);
-    path.arcTo(0, 0, tl*2, tl*2, 180, -90);
+    path.moveTo(tl + B, B);
+    path.lineTo(W - tr - B, B);
+    path.arcTo(W - tr*2 - B, B, tr*2, tr*2, 90, -90);
+    path.lineTo(W-B, H - br - B);
+    path.arcTo(W - br*2 - B, H - br*2 - B, br*2, br*2, 0, -90);
+    path.lineTo(bl + B, H - B);
+    path.arcTo(B, H - bl*2 - B, bl*2, bl*2, 270, -90);
+    path.lineTo(B, tl + B);
+    path.arcTo(B, B, tl*2, tl*2, 180, -90);
     path.closeSubpath();
-    painter->fillPath(path, painter->brush());
+    return path;
 }
 
 void RoundedRectangle::setColor(QColor c) {
-  if (c != m_Color) {
-    m_Color = c;
-    emit colorChanged(m_Color);
+  if (c != _color) {
+    _color = c;
+    emit colorChanged(_color);
     update();
   }
 }
 
 void RoundedRectangle::setBorderColor(QColor c) {
-  if (c != m_BorderColor) {
-    m_BorderColor = c;
-    emit borderColorChanged(m_BorderColor);
+  if (c != _borderColor) {
+    _borderColor = c;
+    emit borderColorChanged(_borderColor);
     update();
   }
 }
 
 void RoundedRectangle::setBorderWidth(qreal bw) {
-  if (bw != m_BorderWidth) {
-    m_BorderWidth = bw;
-    emit borderWidthChanged(m_BorderWidth);
+  if (bw != _borderWidth) {
+    _borderWidth = bw;
+    emit borderWidthChanged(_borderWidth);
     update();
   }
 }
 
 void RoundedRectangle::setRadius(qreal r) {
-  if (r != m_Radius) {
-    m_Radius = r;
-    emit radiusChanged(m_RadiusTL);
+  if (r != _radius) {
+    _radius = r;
+    emit radiusChanged(_radius);
     update();
   }
 }
 
 void RoundedRectangle::setRadiusTL(qreal r) {
-  if (r != m_RadiusTL) {
-    m_RadiusTL = r;
-    emit radiusTLChanged(m_RadiusTL);
+  if (r != _radiusTL) {
+    _radiusTL = r;
+    emit radiusTLChanged(_radiusTL);
     update();
   }
 }
 
 void RoundedRectangle::setRadiusTR(qreal r) {
-  if (r != m_RadiusTR) {
-    m_RadiusTR = r;
-    emit radiusTRChanged(m_RadiusTR);
+  if (r != _radiusTR) {
+    _radiusTR = r;
+    emit radiusTRChanged(_radiusTR);
     update();
   }
 }
 
 void RoundedRectangle::setRadiusBL(qreal r) {
-  if (r != m_RadiusBL) {
-    m_RadiusBL = r;
-    emit radiusBLChanged(m_RadiusBL);
+  if (r != _radiusBL) {
+    _radiusBL = r;
+    emit radiusBLChanged(_radiusBL);
     update();
   }
 }
 
 void RoundedRectangle::setRadiusBR(qreal r) {
-  if (r != m_RadiusBR) {
-    m_RadiusBR = r;
-    emit radiusBRChanged(m_RadiusBR);
+  if (r != _radiusBR) {
+    _radiusBR = r;
+    emit radiusBRChanged(_radiusBR);
     update();
   }
 }
