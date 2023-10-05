@@ -12,18 +12,6 @@ target_sources(${TARGET_NAME} PRIVATE
     ConstaStyle.cpp
     RoundedRect/RoundedRectangle.h
     RoundedRect/RoundedRectangle.cpp
-    RoundedRect/RoundedRectangleMaterial.h
-    RoundedRect/RoundedRectangleMaterial.cpp
-    RoundedRect/RoundedRectangleNode.h
-    RoundedRect/RoundedRectangleNode.cpp
-)
-
-qt6_add_shaders(${TARGET_NAME} "Consta_RoundedRect"
-    BATCHABLE PRECOMPILE OPTIMIZED
-    PREFIX  "/"
-    FILES
-        "Consta/shaders/roundedrectangle.frag"
-        "Consta/shaders/roundedrectangle.vert"
 )
 
 target_link_libraries(${TARGET_NAME} PRIVATE

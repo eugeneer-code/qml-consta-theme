@@ -1,5 +1,6 @@
 import QtQuick
 import Qt5Compat.GraphicalEffects
+import QtQuick.Shapes
 import Consta
 
 Item {
@@ -58,10 +59,9 @@ Item {
     Repeater {
         model: 3
 
-        Rectangle {
+        Item {
             id: rect
-            anchors.centerIn: parent
-            radius: root.radius*1.5
+            anchors.centerIn: root
             property real borderWidth: switch(index){
                 case 0: return root.borderWidth3
                 case 1: return root.borderWidth2
@@ -74,13 +74,19 @@ Item {
             }
             width: root.width + rect.borderWidth*2
             height: root.height + rect.borderWidth*2
-            color: ConstaTheme.palette.control_bg_focus
+
+            RoundedRectangle {
+                anchors.fill: parent
+                radius: root.radius
+                color: ConstaTheme.palette.control_bg_focus
+            }
+
             layer.enabled: true
             layer.effect: OpacityMask {
                 invert: true
                 maskSource: Item {
-                    width: root.width + rect.borderWidth*2
-                    height: root.height + rect.borderWidth*2
+                    width: rect.width
+                    height: rect.height
                     Rectangle {
                         width: root.width
                         height: root.height

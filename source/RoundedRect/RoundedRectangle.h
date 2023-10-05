@@ -1,9 +1,9 @@
 #ifndef CONSTA_ROUNDEDRECTANGLE_H
 #define CONSTA_ROUNDEDRECTANGLE_H
 
-#include <QQuickItem>
+#include <QQuickPaintedItem>
 
-class RoundedRectangle : public QQuickItem {
+class RoundedRectangle : public QQuickPaintedItem {
   Q_OBJECT
   QML_ELEMENT
 
@@ -23,33 +23,29 @@ class RoundedRectangle : public QQuickItem {
       qreal radiusBR MEMBER m_RadiusBR WRITE setRadiusBR NOTIFY radiusBRChanged)
 
 public:
-  explicit RoundedRectangle(QQuickItem *parent = nullptr);
+    explicit RoundedRectangle(QQuickItem *parent = nullptr);
 
-  void setColor(QColor c);
-  void setBorderColor(QColor c);
-  void setBorderWidth(qreal bw);
-  void setRadius(qreal r);
-  void setRadiusTL(qreal r);
-  void setRadiusTR(qreal r);
-  void setRadiusBL(qreal r);
-  void setRadiusBR(qreal r);
+    void setColor(QColor c);
+    void setBorderColor(QColor c);
+    void setBorderWidth(qreal bw);
+    void setRadius(qreal r);
+    void setRadiusTL(qreal r);
+    void setRadiusTR(qreal r);
+    void setRadiusBL(qreal r);
+    void setRadiusBR(qreal r);
 
 signals:
-  void colorChanged(QColor c);
-  void borderColorChanged(QColor c);
-  void borderWidthChanged(qreal bw);
-  void radiusChanged(qreal r);
-  void radiusTLChanged(qreal r);
-  void radiusTRChanged(qreal r);
-  void radiusBLChanged(qreal r);
-  void radiusBRChanged(qreal r);
+    void colorChanged(QColor c);
+    void borderColorChanged(QColor c);
+    void borderWidthChanged(qreal bw);
+    void radiusChanged(qreal r);
+    void radiusTLChanged(qreal r);
+    void radiusTRChanged(qreal r);
+    void radiusBLChanged(qreal r);
+    void radiusBRChanged(qreal r);
 
 protected:
-  QSGNode *updatePaintNode(
-      QSGNode *oldNode,
-      QQuickItem::UpdatePaintNodeData *updatePaintNodeData) override;
-
-  void geometryChange(const QRectF &newGeom, const QRectF &oldGeom) override;
+    void paint(QPainter *painter) override;
 
 private:
   QColor m_Color;
@@ -60,9 +56,6 @@ private:
   qreal m_RadiusTR{-1.0};
   qreal m_RadiusBR{-1.0};
   qreal m_RadiusBL{-1.0};
-
-  bool m_GeometryChanged{false};
-  bool m_MaterialChanged{false};
 };
 
 #endif // CONSTA_ROUNDEDRECTANGLE_H
