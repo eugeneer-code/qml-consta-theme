@@ -20,6 +20,7 @@
         <file>Consta/CheckBox.qml</file>
         <file>Consta/custom/ConstaIcon.qml</file>
         <file>Consta/custom/FocusRectangle.qml</file>
+        <file>Consta/custom/RoundedRectangle.qml</file>
 
         <file>Consta/icons/controls/checkbox_check.svg</file>
         <file>Consta/icons/controls/checkbox_intermediate.svg</file>

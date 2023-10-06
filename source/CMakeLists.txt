@@ -10,8 +10,8 @@ target_sources(${TARGET_NAME} PRIVATE
     Utils.cpp
     ConstaStyle.h
     ConstaStyle.cpp
-    RoundedRect/RoundedRectangle.h
-    RoundedRect/RoundedRectangle.cpp
+    RoundedFrame.h
+    RoundedFrame.cpp
 )
 
 target_link_libraries(${TARGET_NAME} PRIVATE

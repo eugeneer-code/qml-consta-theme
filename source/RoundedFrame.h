@@ -1,9 +1,13 @@
-#ifndef CONSTA_ROUNDEDRECTANGLE_H
-#define CONSTA_ROUNDEDRECTANGLE_H
+#ifndef CONSTA_ROUNDEDFRAME_H
+#define CONSTA_ROUNDEDFRAME_H
 
 #include <QQuickPaintedItem>
 
-class RoundedRectangle : public QQuickPaintedItem {
+/**
+ * Rectangle with different radius on every corner.
+ * Difference from standard Rectangle is that inner radius of the curve is the same as outer radius
+ */
+class RoundedFrame : public QQuickPaintedItem {
   Q_OBJECT
   QML_ELEMENT
 
@@ -17,7 +21,7 @@ class RoundedRectangle : public QQuickPaintedItem {
   Q_PROPERTY(qreal radiusBR MEMBER _radiusBR WRITE setRadiusBR NOTIFY radiusBRChanged)
 
 public:
-    explicit RoundedRectangle(QQuickItem *parent = nullptr);
+    explicit RoundedFrame(QQuickItem *parent = nullptr);
 
     void setColor(QColor c);
     void setBorderColor(QColor c);
@@ -55,4 +59,4 @@ private:
   qreal _radiusBL{-1.0};
 };
 
-#endif // CONSTA_ROUNDEDRECTANGLE_H
+#endif // CONSTA_ROUNDEDFRAME_H

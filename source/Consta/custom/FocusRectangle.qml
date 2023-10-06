@@ -1,5 +1,4 @@
 import QtQuick
-import Qt5Compat.GraphicalEffects
 import QtQuick.Shapes
 import Consta
 
@@ -75,25 +74,12 @@ Item {
             width: root.width + rect.borderWidth*2
             height: root.height + rect.borderWidth*2
 
-            RoundedRectangle {
+            RoundedFrame {
                 anchors.fill: parent
                 radius: root.radius * 1.5
-                color: ConstaTheme.palette.control_bg_focus
-            }
-
-            layer.enabled: true
-            layer.effect: OpacityMask {
-                invert: true
-                maskSource: Item {
-                    width: rect.width
-                    height: rect.height
-                    Rectangle {
-                        width: root.width
-                        height: root.height
-                        anchors.centerIn: parent
-                        radius: root.radius
-                    }
-                }
+                borderWidth: rect.borderWidth
+                borderColor: ConstaTheme.palette.control_bg_focus
+                color: "transparent"
             }
         }
     }
