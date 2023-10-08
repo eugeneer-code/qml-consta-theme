@@ -49,6 +49,18 @@ Item {
 
     enum ControlType {
         Primary,
-        Ghost
+        Secondary,
+        Ghost,
+        Clear
+    }
+
+    enum ButtonForm {
+        Default,
+        Round,
+        Brick,
+        BrickDefault,
+        BrickRound,
+        DefaultBrick,
+        RoundBrick
     }
 }

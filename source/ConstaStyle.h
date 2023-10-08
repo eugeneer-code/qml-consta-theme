@@ -11,12 +11,14 @@ class ConstaStyle : public QObject {
     Q_PROPERTY(bool boldText READ boldText WRITE setBoldText NOTIFY btChanged)
     Q_PROPERTY(int controlType READ controlType WRITE setControlType NOTIFY ctChanged)
     Q_PROPERTY(int controlSize READ controlSize WRITE setControlSize NOTIFY csChanged)
+    Q_PROPERTY(int buttonForm READ buttonForm WRITE setButtonForm NOTIFY bfChanged)
 
 signals:
     void tsChanged();
     void btChanged();
     void ctChanged();
     void csChanged();
+    void bfChanged();
 
 public:
     ConstaStyle(QObject* parent = nullptr);
@@ -35,11 +37,15 @@ public:
     int controlSize() const;
     void setControlSize(int size);
 
+    int buttonForm() const;
+    void setButtonForm(int form);
+
 private:
     int _textStyle;
     bool _boldText;
     int _controlType;
     int _controlSize;
+    int _buttonForm;
 };
 
 }

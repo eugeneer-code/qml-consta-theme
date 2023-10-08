@@ -7,7 +7,8 @@ ConstaStyle::ConstaStyle(QObject* parent)
     _textStyle(3),
     _boldText(false),
     _controlType(0),
-    _controlSize(1)
+    _controlSize(1),
+    _buttonForm(0)
 {
 }
 
@@ -58,4 +59,15 @@ void ConstaStyle::setControlSize(int size)
 {
     _controlSize = size;
     emit csChanged();
+}
+
+int ConstaStyle::buttonForm() const
+{
+    return _buttonForm;
+}
+
+void ConstaStyle::setButtonForm(int form)
+{
+    _buttonForm = form;
+    emit bfChanged();
 }

@@ -16,8 +16,14 @@ Window {
     property var pages: [
         {name: "Colors"},
         {name: "Typography"},
-        {name: "CheckBoxes"}
+        {name: "CheckBoxes"},
+        {name: "Buttons"}
     ]
+
+    Component.onCompleted: {
+        listView.currentIndex = 3
+        stack.currentIndex = 3
+    }
 
     Item {
         id: sideBar
@@ -63,10 +69,11 @@ Window {
             fill: parent
             leftMargin: sideBar.width + 1
         }
-        currentIndex: 2
+        currentIndex: 0
 
         Colors{}
         Typography{}
         CheckBoxes{}
+        Buttons{}
     }
 }
