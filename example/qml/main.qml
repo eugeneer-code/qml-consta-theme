@@ -36,7 +36,7 @@ Window {
             delegate: ItemDelegate {
                 highlighted: index == listView.currentIndex
                 text: modelData.name
-                width: parent.width
+                width: listView.width
                 onClicked: {
                     listView.currentIndex = index
                     stack.currentIndex = index
