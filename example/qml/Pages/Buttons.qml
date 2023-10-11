@@ -11,6 +11,8 @@ Item {
                              Consta.ButtonForm.Brick, Consta.ButtonForm.BrickDefault,
                              Consta.ButtonForm.BrickRound, Consta.ButtonForm.DefaultBrick,
                              Consta.ButtonForm.RoundBrick]
+    property var sizeModel: [Consta.ControlSize.L, Consta.ControlSize.M,
+                             Consta.ControlSize.S, Consta.ControlSize.XS]
 
     Flickable {
         anchors.fill: parent
@@ -32,15 +34,20 @@ Item {
                 columnSpacing: Consta.Spacing.L
                 rowSpacing: Consta.Spacing.M
                 Repeater {
-                    model: page.formModel
+                    model: formModel
                     Repeater {
-                        model: typeModel
+                        model: sizeModel
                         property var form: modelData
-                        Button {
-                            text: "Button"
-                            ConstaStyle.controlType: modelData
-                            ConstaStyle.buttonForm: form
-                            enabled: !enabledControl.checked
+                        Repeater {
+                            model: typeModel
+                            property var itemSize: modelData
+                            Button {
+                                text: "Button"
+                                ConstaStyle.controlType: modelData
+                                ConstaStyle.buttonForm: form
+                                ConstaStyle.controlSize: itemSize
+                                enabled: !enabledControl.checked
+                            }
                         }
                     }
                 }

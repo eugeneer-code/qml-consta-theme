@@ -6,10 +6,8 @@ import Consta
 T.Button {
     id: control
 
-    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                            implicitContentWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             implicitContentHeight + topPadding + bottomPadding)
+    implicitWidth: contentItem.implicitWidth + leftPadding + rightPadding
+    implicitHeight: internal.height
 
     padding: 6
     horizontalPadding: padding + 2
@@ -70,13 +68,9 @@ T.Button {
     }
 
     contentItem: Label {
-        //spacing: control.spacing
-        //mirrored: control.mirrored
-        //display: control.display
-
-        //icon: control.icon
         text: control.text
-        //font: control.font
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
         color: {
             if(!control.enabled) return ConstaTheme.palette.control_typo_disable
             if(control.hovered || control.pressed) return internal.hoverTextColor
@@ -105,5 +99,12 @@ T.Button {
             return internal.borderColor
         }
         border.width: 1
+
+        FocusRectangle {
+            anchors.fill: parent
+            radius: parent.radius
+            visible: control.activeFocus
+            antialiasing: true
+        }
     }
 }
