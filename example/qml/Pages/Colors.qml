@@ -1,7 +1,6 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import QtQuick.Effects
 import Qt5Compat.GraphicalEffects
 import Consta
 
@@ -82,6 +81,7 @@ Item {
         Item {
             width: 250
             height: 60
+            property bool isTransparent: modelData.value.a < 1.0
             Rectangle {
                 id: rectShadow
                 x: 5
@@ -101,41 +101,43 @@ Item {
                 color: ConstaTheme.palette.shadow_layer_2
                 source: rectShadow
             }
-            Image {
-                id: image
-                anchors.centerIn: rect
-                source: "qrc:/icons/rect_pattern.png"
-                visible: false
-                layer.enabled: true
-                layer.smooth: true
-            }
-            Rectangle {
-                id: rectMask
-                width: 48
-                height: 48
-                radius: width/2
-                anchors.centerIn: rect
-                layer.enabled: true
-                visible: false
-                color: "#F4F4F4"
-            }
-            ShaderEffect {
-                anchors.fill: rectMask
-                layer.enabled: true
-                property var source: image
-                property var maskSource: rectMask
-                fragmentShader: "/opacitymask.frag.qsb"
-                opacity: ConstaTheme.currentTheme == Consta.Theme.Default ? 1 : 0.1
-            }
-            Rectangle {
-                id: rect
+            Item{
+                id: colorItem
                 x: 5
                 y: 5
                 width: 50
                 height: 50
-                radius: width/2
-                color: modelData.value
+                Image {
+                    id: image
+                    anchors.centerIn: parent
+                    source: "qrc:/icons/rect_pattern.png"
+                    visible: true
+                    opacity: ConstaTheme.currentTheme == Consta.Theme.Default ? 1.0 : 0.1
+                }
+                Rectangle {
+                    id: rect
+                    x: isTransparent ? -0.75*width/2 : 0
+                    y: isTransparent ? 0.75*height/2 : 0
+                    width: 50
+                    height: 50
+                    radius: isTransparent ? 0 : width/2
+                    color: modelData.value
+                    rotation: isTransparent ? 45 : 0
+                }
+                layer.enabled: true
+                layer.effect: OpacityMask {
+                    maskSource: Item {
+                        width: colorItem.width
+                        height: colorItem.height
+                        Rectangle {
+                            width: colorItem.width
+                            height: colorItem.height
+                            radius: width/2
+                        }
+                    }
+                }
             }
+
             Label {
                 text: modelData.name
                 anchors {

@@ -9,9 +9,9 @@ T.Button {
     implicitWidth: contentItem.implicitWidth + leftPadding + rightPadding
     implicitHeight: internal.height
 
-    padding: 6
-    horizontalPadding: padding + 2
-    spacing: 6
+    leftPadding: internal.padding
+    rightPadding: internal.padding
+    spacing: 16
 
     icon.width: 24
     icon.height: 24
@@ -65,6 +65,13 @@ T.Button {
             case Consta.ControlType.Ghost: return ConstaTheme.palette.control_typo_ghost_hover
             case Consta.ControlType.Clear: return ConstaTheme.palette.control_typo_clear_hover
         }
+        property var padding: switch(control.ConstaStyle.controlSize){
+            case Consta.ControlSize.XS: return 10
+            case Consta.ControlSize.S: return 12
+            case Consta.ControlSize.M: return 16
+            case Consta.ControlSize.L: return 20
+            default: return 12
+        }
     }
 
     contentItem: Label {
@@ -76,15 +83,44 @@ T.Button {
             if(control.hovered || control.pressed) return internal.hoverTextColor
             return internal.textColor
         }
+        font.pixelSize: switch(control.ConstaStyle.controlSize){
+            case Consta.ControlSize.XS: return 12
+            case Consta.ControlSize.S: return 14
+            case Consta.ControlSize.M: return 16
+            case Consta.ControlSize.L: return 18
+            default: return 14
+        }
     }
 
-    background: Rectangle {
+    background: RoundedRectangle {
         implicitWidth: 60
         implicitHeight: internal.height
-        radius: switch(control.ConstaStyle.buttonForm){
-            case Consta.ButtonForm.Default: return 4;
-            case Consta.ButtonForm.Round: return internal.height/2
-            case Consta.ButtonForm.Brick: return 0;
+        radiusTL: switch(control.ConstaStyle.buttonForm){
+            case Consta.ButtonForm.Default:
+            case Consta.ButtonForm.DefaultBrick: return 4;
+            case Consta.ButtonForm.Round:
+            case Consta.ButtonForm.RoundBrick: return internal.height/2
+            default: return 0;
+        }
+        radiusBL: switch(control.ConstaStyle.buttonForm){
+            case Consta.ButtonForm.Default:
+            case Consta.ButtonForm.DefaultBrick: return 4;
+            case Consta.ButtonForm.Round:
+            case Consta.ButtonForm.RoundBrick: return internal.height/2
+            default: return 0;
+        }
+        radiusTR: switch(control.ConstaStyle.buttonForm){
+            case Consta.ButtonForm.Default:
+            case Consta.ButtonForm.BrickDefault: return 4;
+            case Consta.ButtonForm.Round:
+            case Consta.ButtonForm.BrickRound: return internal.height/2
+            default: return 0;
+        }
+        radiusBR: switch(control.ConstaStyle.buttonForm){
+            case Consta.ButtonForm.Default:
+            case Consta.ButtonForm.BrickDefault: return 4;
+            case Consta.ButtonForm.Round:
+            case Consta.ButtonForm.BrickRound: return internal.height/2
             default: return 0;
         }
         color: {
@@ -92,17 +128,20 @@ T.Button {
             if(control.hovered || control.pressed) return internal.hoverColor
             return internal.baseColor
         }
-        border.color: {
+        borderColor: {
             if(!control.enabled && control.ConstaStyle.controlType == Consta.ControlType.Secondary)
                 return ConstaTheme.palette.control_typo_disable
             if(control.hovered || control.pressed) return internal.borderHoverColor
             return internal.borderColor
         }
-        border.width: 1
+        borderWidth: 1
 
         FocusRectangle {
             anchors.fill: parent
-            radius: parent.radius
+            radiusTL: parent.radiusTL
+            radiusTR: parent.radiusTR
+            radiusBL: parent.radiusBL
+            radiusBR: parent.radiusBR
             visible: control.activeFocus
             antialiasing: true
         }

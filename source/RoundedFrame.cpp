@@ -23,7 +23,6 @@ void RoundedFrame::paint(QPainter *painter)
         QPainterPath clipPath = centralPath;
         clipPath.addRect(boundingRect());
         painter->setClipPath(clipPath);
-        //painter->strokePath(borderPath, QPen(_borderColor, _borderWidth));
         painter->fillPath(borderPath, _borderColor);
         painter->setClipPath(clipPath, Qt::NoClip);
     }
@@ -42,6 +41,10 @@ QPainterPath RoundedFrame::rectPath(bool border)
     if(_radiusBR != -1) br = _radiusBR;
     if(_radiusTR != -1) tr = _radiusTR;
     qreal B = border ? _borderWidth : 0;
+    if(tl+B > H/2) tl = H/2 - B;
+    if(tr+B > H/2) tr = H/2 - B;
+    if(bl+B > H/2) bl = H/2 - B;
+    if(br+B > H/2) br = H/2 - B;
 
     QPainterPath path;
     path.moveTo(tl + B, B);

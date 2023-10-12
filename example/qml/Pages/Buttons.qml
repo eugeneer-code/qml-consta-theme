@@ -16,13 +16,15 @@ Item {
 
     Flickable {
         anchors.fill: parent
-        contentHeight: column.height
+        contentHeight: column.height + 24
         clip: true
         boundsBehavior: Flickable.StopAtBounds
         ScrollBar.vertical: ScrollBar{}
 
         ColumnLayout{
             id: column
+            x: 12
+            y: 12
             spacing: Consta.Spacing.L
             CheckBox {
                 id: enabledControl

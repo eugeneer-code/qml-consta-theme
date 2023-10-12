@@ -5,6 +5,10 @@ import Consta
 Item {
     id: root
     property int radius: 0
+    property int radiusTL: 0
+    property int radiusTR: 0
+    property int radiusBL: 0
+    property int radiusBR: 0
 
     onVisibleChanged: {
         if(visible){
@@ -77,6 +81,10 @@ Item {
             RoundedFrame {
                 anchors.fill: parent
                 radius: root.radius * 1.5
+                radiusTL: root.radiusTL * 1.5
+                radiusTR: root.radiusTR * 1.5
+                radiusBL: root.radiusBL * 1.5
+                radiusBR: root.radiusBR * 1.5
                 borderWidth: rect.borderWidth
                 borderColor: ConstaTheme.palette.control_bg_focus
                 color: "transparent"
