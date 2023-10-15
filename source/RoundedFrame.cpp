@@ -36,10 +36,10 @@ QPainterPath RoundedFrame::rectPath(bool border)
     qreal W = size().width();
     qreal H = size().height();
     qreal tl = _radius, tr = _radius, bl = _radius, br = _radius;
-    if(_radiusTL != -1) tl = _radiusTL;
-    if(_radiusBL != -1) bl = _radiusBL;
-    if(_radiusBR != -1) br = _radiusBR;
-    if(_radiusTR != -1) tr = _radiusTR;
+    if(_radiusTL >= 0) tl = _radiusTL;
+    if(_radiusBL >= 0) bl = _radiusBL;
+    if(_radiusBR >= 0) br = _radiusBR;
+    if(_radiusTR >= 0) tr = _radiusTR;
     qreal B = border ? _borderWidth : 0;
     if(tl+B > H/2) tl = H/2 - B;
     if(tr+B > H/2) tr = H/2 - B;

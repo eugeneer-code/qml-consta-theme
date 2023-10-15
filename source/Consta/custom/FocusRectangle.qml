@@ -5,10 +5,10 @@ import Consta
 Item {
     id: root
     property int radius: 0
-    property int radiusTL: 0
-    property int radiusTR: 0
-    property int radiusBL: 0
-    property int radiusBR: 0
+    property int radiusTL: -1
+    property int radiusTR: -1
+    property int radiusBL: -1
+    property int radiusBR: -1
 
     onVisibleChanged: {
         if(visible){

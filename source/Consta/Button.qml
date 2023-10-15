@@ -6,15 +6,15 @@ import Consta
 T.Button {
     id: control
 
-    implicitWidth: contentItem.implicitWidth + leftPadding + rightPadding
+    implicitWidth: internal.onlyIcon ? internal.height : contentItem.implicitWidth + leftPadding + rightPadding
     implicitHeight: internal.height
 
     leftPadding: internal.padding
     rightPadding: internal.padding
-    spacing: 16
+    spacing: internal.spacing
 
-    icon.width: 24
-    icon.height: 24
+    icon.width: internal.iconSize
+    icon.height: internal.iconSize
     icon.color: control.checked || control.highlighted ? control.palette.brightText :
                 control.flat && !control.down ? (control.visualFocus ? control.palette.highlight : control.palette.windowText) : control.palette.buttonText
 
@@ -72,27 +72,59 @@ T.Button {
             case Consta.ControlSize.L: return 20
             default: return 12
         }
-    }
-
-    contentItem: Label {
-        text: control.text
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        color: {
-            if(!control.enabled) return ConstaTheme.palette.control_typo_disable
-            if(control.hovered || control.pressed) return internal.hoverTextColor
-            return internal.textColor
-        }
-        font.pixelSize: switch(control.ConstaStyle.controlSize){
+        property var iconSize: switch(control.ConstaStyle.controlSize){
             case Consta.ControlSize.XS: return 12
-            case Consta.ControlSize.S: return 14
+            case Consta.ControlSize.S: return 12
             case Consta.ControlSize.M: return 16
-            case Consta.ControlSize.L: return 18
-            default: return 14
+            case Consta.ControlSize.L: return 24
+            default: return 12
+        }
+        property var spacing: switch(control.ConstaStyle.controlSize){
+            case Consta.ControlSize.XS: return 8
+            case Consta.ControlSize.S: return 10
+            case Consta.ControlSize.M: return 14
+            case Consta.ControlSize.L: return 16
+            default: return 10
+        }
+        property bool onlyIcon: control.text == ""
+    }
+
+    contentItem: Item {
+        implicitWidth: iconItem.visible ? label.implicitWidth + internal.iconSize + control.spacing : label.implicitWidth
+        implicitHeight: internal.height
+        ConstaIcon {
+            id: iconItem
+            image.source: control.icon.source
+            //image.name: control.icon.name
+            color: label.color
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: internal.onlyIcon ? parent.horizontalCenter : undefined
+            visible: icon.source != "" || icon.name != ""
+            size: internal.iconSize
+        }
+        Label {
+            id: label
+            text: control.text
+            anchors.fill: parent
+            anchors.leftMargin: iconItem.visible ? internal.iconSize + control.spacing : 0
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            color: {
+                if(!control.enabled) return ConstaTheme.palette.control_typo_disable
+                if(control.hovered || control.pressed) return internal.hoverTextColor
+                return internal.textColor
+            }
+            font.pixelSize: switch(control.ConstaStyle.controlSize){
+                case Consta.ControlSize.XS: return 12
+                case Consta.ControlSize.S: return 14
+                case Consta.ControlSize.M: return 16
+                case Consta.ControlSize.L: return 18
+                default: return 14
+            }
         }
     }
 
-    background: RoundedRectangle {
+    background: RoundedFrame {
         implicitWidth: 60
         implicitHeight: internal.height
         radiusTL: switch(control.ConstaStyle.buttonForm){
@@ -134,7 +166,7 @@ T.Button {
             if(control.hovered || control.pressed) return internal.borderHoverColor
             return internal.borderColor
         }
-        borderWidth: 1
+        borderWidth: control.ConstaStyle.controlType == Consta.ControlType.Secondary ? 1 : 0
 
         FocusRectangle {
             anchors.fill: parent

@@ -26,9 +26,21 @@ Item {
             x: 12
             y: 12
             spacing: Consta.Spacing.L
-            CheckBox {
-                id: enabledControl
-                text: "Disabled"
+
+            Row {
+                spacing: Consta.Spacing.M
+                CheckBox {
+                    id: enabledControl
+                    text: "Disabled"
+                }
+                CheckBox {
+                    id: iconControl
+                    text: "icon"
+                }
+                CheckBox {
+                    id: onlyIconControl
+                    text: "onlyIcon"
+                }
             }
 
             GridLayout {
@@ -44,11 +56,12 @@ Item {
                             model: typeModel
                             property var itemSize: modelData
                             Button {
-                                text: "Button"
+                                text: onlyIconControl.checked ? "" : "Button"
                                 ConstaStyle.controlType: modelData
                                 ConstaStyle.buttonForm: form
                                 ConstaStyle.controlSize: itemSize
                                 enabled: !enabledControl.checked
+                                icon.source: iconControl.checked ? "qrc:/icons/arrow.svg" : ""
                             }
                         }
                     }
