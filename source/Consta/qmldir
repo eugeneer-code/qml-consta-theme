@@ -12,6 +12,7 @@ ConstaPaletteDisplay 1.0 ConstaPaletteDisplay.qml
 Label 1.0 Label.qml
 CheckBox 1.0 CheckBox.qml
 Button 1.0 Button.qml
+TextField 1.0 TextField.qml
 
 # Custom components
 ConstaIcon 1.0 custom/ConstaIcon.qml

@@ -17,12 +17,13 @@ Window {
         {name: "Colors"},
         {name: "Typography"},
         {name: "CheckBoxes"},
-        {name: "Buttons"}
+        {name: "Buttons"},
+        {name: "Inputs"}
     ]
 
     Component.onCompleted: {
-        listView.currentIndex = 3
-        stack.currentIndex = 3
+        listView.currentIndex = 4
+        stack.currentIndex = 4
     }
 
     Item {
@@ -75,5 +76,6 @@ Window {
         Typography{}
         CheckBoxes{}
         Buttons{}
+        Inputs{}
     }
 }
