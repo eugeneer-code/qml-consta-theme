@@ -14,6 +14,7 @@ CheckBox 1.0 CheckBox.qml
 Button 1.0 Button.qml
 TextField 1.0 TextField.qml
 TextArea 1.0 TextArea.qml
+ComboBox 1.0 ComboBox.qml
 
 # Custom components
 ConstaIcon 1.0 custom/ConstaIcon.qml

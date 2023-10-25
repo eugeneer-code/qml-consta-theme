@@ -21,6 +21,7 @@
         <file>Consta/Button.qml</file>
         <file>Consta/TextField.qml</file>
         <file>Consta/TextArea.qml</file>
+        <file>Consta/ComboBox.qml</file>
         <file>Consta/custom/ConstaIcon.qml</file>
         <file>Consta/custom/FocusRectangle.qml</file>
         <file>Consta/custom/RoundedRectangle.qml</file>

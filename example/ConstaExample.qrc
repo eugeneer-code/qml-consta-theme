@@ -6,6 +6,7 @@
         <file>qml/Pages/CheckBoxes.qml</file>
         <file>qml/Pages/Buttons.qml</file>
         <file>qml/Pages/Inputs.qml</file>
+        <file>qml/Pages/Select.qml</file>
         <file>icons/rect_pattern.png</file>
         <file>icons/arrow.svg</file>
     </qresource>
