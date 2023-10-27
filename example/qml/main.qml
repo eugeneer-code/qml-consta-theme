@@ -39,6 +39,7 @@ Window {
                 highlighted: index == listView.currentIndex
                 text: modelData.name
                 width: listView.width
+                height: 40
                 onClicked: {
                     listView.currentIndex = index
                     stack.currentIndex = index

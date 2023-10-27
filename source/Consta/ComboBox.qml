@@ -13,6 +13,7 @@ T.ComboBox {
 
     leftPadding: internal.padding + (!control.mirrored || !indicator || !indicator.visible ? 0 : indicator.width + spacing)
     rightPadding: internal.padding + (control.mirrored || !indicator || !indicator.visible ? 0 : indicator.width + spacing)
+    selectTextByMouse: true
 
     QtObject {
         id: internal
@@ -24,35 +25,35 @@ T.ComboBox {
             default: return 32
         }
         property int padding: switch(control.ConstaStyle.controlSize){
-            case Consta.ControlSize.XS: return 6
-            case Consta.ControlSize.S: return 8
-            case Consta.ControlSize.M: return 10
-            case Consta.ControlSize.L: return 12
-            default: return 8
+            case Consta.ControlSize.XS: return hasRadius ? 12 : 6
+            case Consta.ControlSize.S: return hasRadius ? 12 : 8
+            case Consta.ControlSize.M: return hasRadius ? 16 : 10
+            case Consta.ControlSize.L: return hasRadius ? 20 : 12
+            default: return hasRadius ? 12 : 8
         }
+        property bool hasRadius: control.ConstaStyle.buttonForm === Consta.ButtonForm.Round ||
+                                 control.ConstaStyle.buttonForm === Consta.ButtonForm.RoundBrick
     }
 
     delegate: ItemDelegate {
+        ConstaStyle.controlSize: control.ConstaStyle.controlSize
         width: ListView.view.width
         text: control.textRole ? (Array.isArray(control.model) ? modelData[control.textRole] : model[control.textRole]) : modelData
-        palette.text: control.palette.text
-        palette.highlightedText: control.palette.highlightedText
-        font.weight: control.currentIndex === index ? Font.DemiBold : Font.Normal
-        highlighted: control.highlightedIndex === index
+        highlighted: control.currentIndex === index
         hoverEnabled: control.hoverEnabled
     }
 
-    indicator: ColorImage {
-        x: control.mirrored ? control.padding : control.width - width - control.padding
+    indicator: ConstaIcon {
+        x: control.width - (internal.height + width) / 2
         y: control.topPadding + (control.availableHeight - height) / 2
-        color: control.palette.dark
-        defaultColor: "#353637"
-        source: "qrc:/qt-project.org/imports/QtQuick/Controls/Basic/images/double-arrow.png"
-        opacity: enabled ? 1 : 0.3
+        color: ConstaTheme.palette.control_typo_placeholder
+        size: 24
+        source: "qrc:/Consta/icons/controls/combobox_arrow.svg"
+        rotation: control.popup.visible ? 180 : 0
     }
 
     contentItem: T.TextField {
-        leftPadding: internal.padding
+        leftPadding: 0
         rightPadding: 1
 
         text: control.editable ? control.editText : control.displayText
@@ -64,13 +65,20 @@ T.ComboBox {
         validator: control.validator
         selectByMouse: control.selectTextByMouse
         verticalAlignment: Text.AlignVCenter
-
-        background: Rectangle {
-            visible: control.enabled && control.editable
-            border.width: parent && parent.activeFocus ? 2 : 1
-            border.color: parent && parent.activeFocus ? control.palette.highlight : control.palette.button
-            color: control.palette.base
+        color: control.enabled ? ConstaTheme.palette.control_typo_default : ConstaTheme.palette.control_typo_disable
+        selectionColor: ConstaTheme.palette.typo_brand
+        selectedTextColor: ConstaTheme.palette.control_typo_primary
+        placeholderTextColor: control.enabled ? ConstaTheme.palette.control_typo_placeholder : ConstaTheme.palette.control_typo_disable
+        font.family: "Inter"
+        font.pixelSize: switch(control.ConstaStyle.controlSize){
+            case Consta.ControlSize.XS: return 12
+            case Consta.ControlSize.S: return 14
+            case Consta.ControlSize.M: return 16
+            case Consta.ControlSize.L: return 18
+            default: return 14
         }
+
+        background: Item{}
     }
 
     background: RoundedRectangle {
@@ -118,32 +126,28 @@ T.ComboBox {
         y: control.height
         width: control.width
         height: Math.min(contentItem.implicitHeight, control.Window.height - topMargin - bottomMargin)
-        topMargin: 6
-        bottomMargin: 6
 
-        contentItem: ListView {
-            clip: true
-            implicitHeight: contentHeight
-            model: control.delegateModel
-            currentIndex: control.highlightedIndex
-            highlightMoveDuration: 0
-
-            Rectangle {
-                z: 10
-                width: parent.width
-                height: parent.height
-                color: "transparent"
-                border.color: control.palette.mid
+        contentItem: Item{
+            implicitHeight: listView.contentHeight + 2
+            ListView {
+                id: listView
+                clip: true
+                width: parent.width - 2
+                height: parent.height - 2
+                x: 1
+                y: 1
+                model: control.delegateModel
+                currentIndex: control.highlightedIndex
+                highlightMoveDuration: 0
+                T.ScrollIndicator.vertical: ScrollIndicator { }
             }
-
-            T.ScrollIndicator.vertical: ScrollIndicator { }
         }
 
         background: Rectangle {
             color: ConstaTheme.palette.control_bg_default
             border.width: 1
             border.color: ConstaTheme.palette.control_bg_border_default
-            radius: 4
+            //radius: 4
         }
     }
 }

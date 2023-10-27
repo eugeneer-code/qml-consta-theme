@@ -30,8 +30,9 @@ Item {
                 text: "Disabled"
             }
 
-            ComboBox {
-                model: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
+            CheckBox {
+                id: editableControl
+                text: "Editable"
             }
 
             Repeater{
@@ -47,7 +48,7 @@ Item {
                             ConstaStyle.buttonForm: form
                             Layout.preferredWidth: 200
                             enabled: !enabledControl.checked
-                            //placeholderText: "Select item"
+                            editable: editableControl.checked
                             model: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
                         }
                     }
