@@ -26,6 +26,7 @@ QtObject {
         }
     }
 
+    property var fontFamily: "Inter"
     // Load fonts
     property FontLoader fontBlack: FontLoader{source: Qt.resolvedUrl("fonts/Inter-Black.ttf")}
     property FontLoader fontBold: FontLoader {source: Qt.resolvedUrl("fonts/Inter-Bold.ttf")}

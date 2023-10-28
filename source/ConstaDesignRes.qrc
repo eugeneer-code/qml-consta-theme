@@ -23,9 +23,12 @@
         <file>Consta/TextArea.qml</file>
         <file>Consta/ComboBox.qml</file>
         <file>Consta/ItemDelegate.qml</file>
+        <file>Consta/TabBar.qml</file>
+        <file>Consta/TabButton.qml</file>
         <file>Consta/custom/ConstaIcon.qml</file>
         <file>Consta/custom/FocusRectangle.qml</file>
         <file>Consta/custom/RoundedRectangle.qml</file>
+        <file>Consta/custom/ConstaIconLabel.qml</file>
 
         <file>Consta/icons/controls/checkbox_check.svg</file>
         <file>Consta/icons/controls/checkbox_intermediate.svg</file>

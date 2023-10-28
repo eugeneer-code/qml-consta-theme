@@ -19,12 +19,13 @@ Window {
         {name: "CheckBoxes"},
         {name: "Buttons"},
         {name: "Inputs"},
-        {name: "Selects"}
+        {name: "Selects"},
+        {name: "Tabs"}
     ]
 
     Component.onCompleted: {
-        listView.currentIndex = 5
-        stack.currentIndex = 5
+        listView.currentIndex = 6
+        stack.currentIndex = 6
     }
 
     Item {
@@ -80,5 +81,6 @@ Window {
         Buttons{}
         Inputs{}
         Select{}
+        Tabs{}
     }
 }

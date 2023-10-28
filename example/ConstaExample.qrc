@@ -7,7 +7,9 @@
         <file>qml/Pages/Buttons.qml</file>
         <file>qml/Pages/Inputs.qml</file>
         <file>qml/Pages/Select.qml</file>
+        <file>qml/Pages/Tabs.qml</file>
         <file>icons/rect_pattern.png</file>
         <file>icons/arrow.svg</file>
+        <file>icons/star.svg</file>
     </qresource>
 </RCC>

@@ -16,8 +16,11 @@ TextField 1.0 TextField.qml
 TextArea 1.0 TextArea.qml
 ComboBox 1.0 ComboBox.qml
 ItemDelegate 1.0 ItemDelegate.qml
+TabBar 1.0 TabBar.qml
+TabButton 1.0 TabButton.qml
 
 # Custom components
 ConstaIcon 1.0 custom/ConstaIcon.qml
 FocusRectangle 1.0 custom/FocusRectangle.qml
 RoundedRectangle 1.0 custom/RoundedRectangle.qml
+ConstaIconLabel 1.0 custom/ConstaIconLabel.qml
