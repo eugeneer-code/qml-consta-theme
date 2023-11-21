@@ -18,6 +18,7 @@ ComboBox 1.0 ComboBox.qml
 ItemDelegate 1.0 ItemDelegate.qml
 TabBar 1.0 TabBar.qml
 TabButton 1.0 TabButton.qml
+Popup 1.0 Popup.qml
 
 # Custom components
 ConstaIcon 1.0 custom/ConstaIcon.qml

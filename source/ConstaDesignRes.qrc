@@ -25,6 +25,7 @@
         <file>Consta/ItemDelegate.qml</file>
         <file>Consta/TabBar.qml</file>
         <file>Consta/TabButton.qml</file>
+        <file>Consta/Popup.qml</file>
         <file>Consta/custom/ConstaIcon.qml</file>
         <file>Consta/custom/FocusRectangle.qml</file>
         <file>Consta/custom/RoundedRectangle.qml</file>
