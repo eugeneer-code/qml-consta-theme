@@ -19,6 +19,7 @@ ItemDelegate 1.0 ItemDelegate.qml
 TabBar 1.0 TabBar.qml
 TabButton 1.0 TabButton.qml
 Popup 1.0 Popup.qml
+Drawer 1.0 Drawer.qml
 
 # Custom components
 ConstaIcon 1.0 custom/ConstaIcon.qml

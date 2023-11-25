@@ -27,10 +27,10 @@ QtObject {
     property color bg_secondary: _ConstaUtils.hsla(project, "+0", "-75", "+59", "100%")
     property color bg_brand: project
     property color bg_link: path
-    property color bg_border: _ConstaUtils.hsla(phantom, "+0", "-1", "+0", "20%")
-    property color bg_stripe: _ConstaUtils.hsla(phantom, "+0", "-11", "+0", "5%")
-    property color bg_ghost: _ConstaUtils.hsla(phantom, "+0", "-11", "+0", "8%")
-    property color bg_tone: _ConstaUtils.hsla(phantom, "+0", "-11", "+0", "85%")
+    property color bg_border: _ConstaUtils.hsla(phantom, "+0", "+0", "-1", "20%")
+    property color bg_stripe: _ConstaUtils.hsla(phantom, "+0", "+0", "-11", "5%")
+    property color bg_ghost: _ConstaUtils.hsla(phantom, "+0", "+0", "-11", "8%")
+    property color bg_tone: _ConstaUtils.hsla(phantom, "+0", "+0", "-11", "85%")
     property color bg_soft: _ConstaUtils.alpha(essential, 0.9)
     property color bg_system: _ConstaUtils.hsla(system, "204", "18", "89", "100%")
     property color bg_normal: normal
