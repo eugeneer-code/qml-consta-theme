@@ -27,6 +27,8 @@
         <file>Consta/TabButton.qml</file>
         <file>Consta/Popup.qml</file>
         <file>Consta/Drawer.qml</file>
+        <file>Consta/Menu.qml</file>
+        <file>Consta/MenuItem.qml</file>
         <file>Consta/custom/ConstaIcon.qml</file>
         <file>Consta/custom/FocusRectangle.qml</file>
         <file>Consta/custom/RoundedRectangle.qml</file>
