@@ -26,3 +26,4 @@ ConstaIcon 1.0 custom/ConstaIcon.qml
 FocusRectangle 1.0 custom/FocusRectangle.qml
 RoundedRectangle 1.0 custom/RoundedRectangle.qml
 ConstaIconLabel 1.0 custom/ConstaIconLabel.qml
+TitleContainer 1.0 custom/TitleContainer.qml
