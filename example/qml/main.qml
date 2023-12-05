@@ -24,8 +24,8 @@ Window {
     ]
 
     Component.onCompleted: {
-        listView.currentIndex = 6
-        stack.currentIndex = 6
+        listView.currentIndex = 1
+        stack.currentIndex = 1
     }
 
     Item {

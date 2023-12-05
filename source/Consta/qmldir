@@ -22,6 +22,7 @@ Popup 1.0 Popup.qml
 Drawer 1.0 Drawer.qml
 Menu 1.0 Menu.qml
 MenuItem 1.0 MenuItem.qml
+Tumbler 1.0 Tumbler.qml
 
 # Custom components
 ConstaIcon 1.0 custom/ConstaIcon.qml
