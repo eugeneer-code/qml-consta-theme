@@ -12,6 +12,8 @@ target_sources(${TARGET_NAME} PRIVATE
     ConstaStyle.cpp
     RoundedFrame.h
     RoundedFrame.cpp
+    ConstaFilterProxyModel.h
+    ConstaFilterProxyModel.cpp
 )
 
 target_link_libraries(${TARGET_NAME} PRIVATE

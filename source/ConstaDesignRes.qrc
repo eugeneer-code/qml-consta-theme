@@ -35,9 +35,11 @@
         <file>Consta/custom/RoundedRectangle.qml</file>
         <file>Consta/custom/ConstaIconLabel.qml</file>
         <file>Consta/custom/TitleContainer.qml</file>
+        <file>Consta/custom/FilterComboBox.qml</file>
 
         <file>Consta/icons/controls/checkbox_check.svg</file>
         <file>Consta/icons/controls/checkbox_intermediate.svg</file>
         <file>Consta/icons/controls/combobox_arrow.svg</file>
+        <file>Consta/icons/controls/search.svg</file>
     </qresource>
 </RCC>
