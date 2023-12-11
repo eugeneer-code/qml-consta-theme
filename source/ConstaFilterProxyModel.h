@@ -8,16 +8,20 @@ class ConstaFilterProxyModel : public QSortFilterProxyModel {
     Q_OBJECT
     Q_PROPERTY(QString filter READ filter WRITE setFilter NOTIFY filterChanged)
     Q_PROPERTY(QString filterRole READ filterRole WRITE setFilterRole NOTIFY filterRoleChanged)
+    Q_PROPERTY(QVariant filterModel READ filterModel WRITE setFilterModel NOTIFY filterModelChanged)
 signals:
     void filterChanged();
     void filterRoleChanged();
+    void filterModelChanged();
 
 public:
-    ConstaFilterProxyModel(QObject *parent);
+    ConstaFilterProxyModel(QObject *parent = nullptr);
     QString filter() const;
     void setFilter(const QString &filter);
     QString filterRole() const;
     void setFilterRole(const QString& role);
+    QVariant filterModel() const;
+    void setFilterModel(const QVariant& model);
 
 protected:
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;

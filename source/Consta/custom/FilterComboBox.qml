@@ -7,9 +7,12 @@ import Consta
 T.ComboBox {
     id: control
 
-    property alias searchControl: searchItem
     property var placeholderSearchText: "Search"
-    property var searchModel
+    property var filterModel: ConstaFilterProxyModel {
+        filterRole: control.filterRole
+    }
+    onModelChanged: filterModel.filterModel = model
+    property var filterRole: textRole
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitContentWidth + leftPadding + rightPadding)
@@ -143,7 +146,6 @@ T.ComboBox {
             implicitHeight: listView.contentHeight + 2 + 60
 
             TextField {
-                id: searchItem
                 width: parent.width - 24
                 x: 12
                 y: 12
@@ -159,6 +161,7 @@ T.ComboBox {
                     }
                     size: 16
                 }
+                onTextChanged: control.filterModel.filter = text
             }
 
             ListView {
@@ -168,9 +171,8 @@ T.ComboBox {
                 height: parent.height - 2 - 60
                 x: 1
                 y: 61
-                model: ConstaFilterProxyModel {
-                    sourceModel: control.delegateModel
-                }
+                model: control.filterModel
+                delegate: control.delegate
                 currentIndex: control.highlightedIndex
                 highlightMoveDuration: 0
                 boundsBehavior: Flickable.StopAtBounds

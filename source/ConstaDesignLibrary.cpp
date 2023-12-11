@@ -9,6 +9,7 @@
 void ConstaDesignLibrary::initLibrary(QQmlEngine *engine)
 {
     // Register C++ classes
+    consta::ConstaFilterProxyModel model;
     qmlRegisterUncreatableType<consta::ConstaStyle>("Consta", 1, 0, "ConstaStyle", "Consta attached properties");
     qmlRegisterType<consta::ConstaFilterProxyModel>("Consta", 1, 0, "ConstaFilterProxyModel");
     qmlRegisterType<RoundedFrame>("Consta", 1, 0, "RoundedFrame");

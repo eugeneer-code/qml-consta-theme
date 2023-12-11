@@ -21,6 +21,19 @@ void ConstaFilterProxyModel::setFilter(const QString& filter)
     emit filterChanged();
 }
 
+QVariant ConstaFilterProxyModel::filterModel() const
+{
+    return QVariant::fromValue(sourceModel());
+}
+
+void ConstaFilterProxyModel::setFilterModel(const QVariant& model)
+{
+    auto itemModel = model.value<QAbstractItemModel*>();
+    if(!itemModel) qDebug() << "Error converting QVariant to QAbstractItemModel*";
+    else setSourceModel(itemModel);
+    emit filterModelChanged();
+}
+
 QString ConstaFilterProxyModel::filterRole() const
 {
     return _role;
