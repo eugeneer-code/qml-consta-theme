@@ -57,3 +57,8 @@ bool ConstaFilterProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &
     const auto testString = sourceModel()->data(rawIndex, roleId).toString();
     return testString.contains(_filter, Qt::CaseInsensitive);
 }
+
+int ConstaFilterProxyModel::sourceIndex(int row) const
+{
+    return mapToSource(index(row, 0)).row();
+}

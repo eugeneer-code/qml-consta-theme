@@ -48,6 +48,11 @@ T.ComboBox {
         text: control.textRole ? (Array.isArray(control.model) ? modelData[control.textRole] : model[control.textRole]) : modelData
         highlighted: control.currentIndex === index
         hoverEnabled: control.hoverEnabled
+        onClicked: {
+            control.currentIndex = filterModel.sourceIndex(index)
+            filterModel.filter = ""
+            popup.close()
+        }
     }
 
     indicator: ConstaIcon {

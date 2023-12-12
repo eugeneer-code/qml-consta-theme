@@ -23,6 +23,8 @@ public:
     QVariant filterModel() const;
     void setFilterModel(const QVariant& model);
 
+    Q_INVOKABLE int sourceIndex(int row) const;
+
 protected:
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
     //bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
