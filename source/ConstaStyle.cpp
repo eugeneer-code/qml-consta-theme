@@ -8,7 +8,8 @@ ConstaStyle::ConstaStyle(QObject* parent)
     _boldText(false),
     _controlType(0),
     _controlSize(1),
-    _buttonForm(0)
+    _buttonForm(0),
+    _hasError(false)
 {
 }
 
@@ -70,4 +71,15 @@ void ConstaStyle::setButtonForm(int form)
 {
     _buttonForm = form;
     emit bfChanged();
+}
+
+bool ConstaStyle::hasError() const
+{
+    return _hasError;
+}
+
+void ConstaStyle::setHasError(bool error)
+{
+    _hasError = error;
+    emit heChanged();
 }

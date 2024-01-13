@@ -29,6 +29,10 @@ Item {
                 id: enabledControl
                 text: "Disabled"
             }
+            CheckBox {
+                id: errorControl
+                text: "Has error"
+            }
 
             Repeater{
                 model: formModel
@@ -41,6 +45,7 @@ Item {
                         TextField {
                             ConstaStyle.controlSize: modelData
                             ConstaStyle.buttonForm: form
+                            ConstaStyle.hasError: errorControl.checked
                             Layout.preferredWidth: 200
                             enabled: !enabledControl.checked
                             placeholderText: "Text input"

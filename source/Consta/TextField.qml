@@ -27,6 +27,7 @@ T.TextField {
             case Consta.ControlSize.L: return 48
             default: return 32
         }
+        property bool hasError: control.ConstaStyle.hasError
     }
 
     color: control.enabled ? ConstaTheme.palette.control_typo_default : ConstaTheme.palette.control_typo_disable
@@ -91,9 +92,13 @@ T.TextField {
             default: return 0;
         }
         borderWidth: 1
-        color: control.enabled ? ConstaTheme.palette.control_bg_default : ConstaTheme.palette.control_bg_disable
+        color: {
+            if(!control.enabled) return ConstaTheme.palette.control_bg_disable
+            return ConstaTheme.palette.control_bg_default
+        }
         borderColor: {
             if(!control.enabled) return ConstaTheme.palette.control_bg_border_disable
+            if(internal.hasError) return ConstaTheme.palette.bg_alert
             if(control.activeFocus) return ConstaTheme.palette.control_bg_border_focus
             if(control.hovered) return ConstaTheme.palette.control_bg_border_default_hover
             return ConstaTheme.palette.control_bg_border_default
