@@ -138,7 +138,7 @@ T.ComboBox {
         y: control.height
         width: control.width
         height: {
-            var pos = mapToItem(control.Window, x, y)
+            var pos = mapToItem(Overlay.overlay, x, y)
             if(pos.y + contentItem.implicitHeight > control.Window.height - 16){
                 return control.Window.height - pos.y - 16
             }
