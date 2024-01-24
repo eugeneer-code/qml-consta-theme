@@ -156,6 +156,7 @@ T.ComboBox {
                 y: 12
                 rightPadding: 32
                 placeholderText: control.placeholderSearchText
+                inputMethodHints: Qt.ImhNoPredictiveText
                 ConstaIcon {
                     source: "qrc:/Consta/icons/controls/search.svg"
                     color: ConstaTheme.palette.typo_secondary
@@ -166,7 +167,7 @@ T.ComboBox {
                     }
                     size: 16
                 }
-                onTextChanged: control.filterModel.filter = text
+                onDisplayTextChanged: control.filterModel.filter = displayText
             }
 
             ListView {
